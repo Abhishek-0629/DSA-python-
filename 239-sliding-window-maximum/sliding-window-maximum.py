@@ -5,7 +5,7 @@ class Solution:
         ans =[]
         n=len(nums)
         for i in range(n):
-            while dq and dq[0]<=i-k:#Revome indices outside the current window 
+            if  dq and dq[0]<=i-k:#Revome indices outside the current window 
                 dq.popleft()
             while dq and nums[dq[-1]]<nums[i]:#Remove smaller elements from the back 
                 dq.pop()
