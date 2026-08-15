@@ -5,6 +5,9 @@ class Solution:
         if n!=m:
             return False 
         d = s + s
-        return goal in d 
+        if goal in d:
+            return True 
+        else:
+            return False 
           
       
