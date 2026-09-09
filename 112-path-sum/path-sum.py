@@ -10,8 +10,9 @@ class Solution:
             if node is None:
                 return False 
             currsum+=node.val
-
             if node.left is None and node.right is None:
                 return currsum==targetSum
-            return dfs(node.left,currsum) or dfs(node.right,currsum)
+            leftsum=dfs(node.left,currsum)
+            rightsum=dfs(node.right,currsum)
+            return leftsum or rightsum
         return dfs(root,0)
