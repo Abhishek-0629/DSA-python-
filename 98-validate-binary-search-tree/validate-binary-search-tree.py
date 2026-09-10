@@ -9,8 +9,10 @@ class Solution:
         def solve(node,low,high):
             if node is None:
                 return True
-            if not (node.val>low and node.val<high):
+            if  not(node.val>low and node.val<high):
                 return False 
-                
+            
+            # if not(node.val<low or  node.val>high):
+            #     return False
             return solve(node.left,low,node.val) and solve(node.right,node.val,high)
         return solve(root,float('-inf'),float('inf'))
