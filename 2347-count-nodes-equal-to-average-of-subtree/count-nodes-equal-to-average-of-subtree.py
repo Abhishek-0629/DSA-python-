@@ -7,16 +7,20 @@
 class Solution:
     def averageOfSubtree(self, root: TreeNode) -> int:
         ans = 0 
-        def dfs(node):
-            nonlocal ans 
+        def solve(node):
             if node is None:
-                return 0,0
-            leftsum,left_countsum=dfs(node.left)
-            rightsum,right_countsum=dfs(node.right)
-            total_sum=leftsum+node.val+rightsum
-            total_count=1+left_countsum+right_countsum
+                return 0,0 
+            nonlocal ans 
+
+
+            left_sum,left_count=solve(node.left)
+            right_sum,right_count=solve(node.right)
+            total_sum=left_sum+node.val+right_sum
+            total_count=1+left_count+right_count
+
             if node.val==total_sum//total_count:
                 ans+=1
             return total_sum,total_count
-        dfs(root)
+        solve(root)
         return ans 
+       
